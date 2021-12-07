@@ -1,0 +1,29 @@
+using System;
+ 
+class Program
+{
+    static void Main()
+    {
+        Console.Write("q = "); // число
+        double q = double.Parse(Console.ReadLine());
+        Console.Write("b = "); // знаменатель
+        double b = double.Parse(Console.ReadLine());
+        Console.Write("n = "); // количество повторений
+        int n = int.Parse(Console.ReadLine());
+        double fn = q;  // n-ый член
+        double sum = 0; // сумма
+        sum = F(q, b, n, ref fn);
+ 
+        Console.WriteLine("fn = " + fn);
+        Console.WriteLine("sum = " + sum);
+        Console.ReadKey();
+    }
+ 
+    static double F(double q, double b, int n, ref double fn)
+    {
+        if (n == 0) return 0;
+        if (n == 1) return q;
+        fn *= b;
+        return fn + F(q, b, --n, ref fn);
+    }
+}
